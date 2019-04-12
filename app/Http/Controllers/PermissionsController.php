@@ -88,12 +88,10 @@ class PermissionsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-//            'name' => 'required|max:255|alphadash|unique:permissions,name',
             'display_name' => 'required|max:255',
             'description' => 'sometimes|max:255'
         ]);
         $permission = Permission::findOrFail($id);
-//        $permission->name = $request->name;
         $permission->display_name = $request->display_name;
         $permission->description = $request->description;
         $permission->save();

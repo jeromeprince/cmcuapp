@@ -25,6 +25,6 @@ Route::prefix('admin')->middleware('role:superadministrateur|gestionnaire|medeci
     Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
     Route::resource('/users', 'UsersController');
     Route::resource('/permissions', 'PermissionsController', ['except' => 'destroy']);
-    Route::resource('/roles', 'RolesController', ['except' => 'destroy']);
+    Route::resource('/roles', 'RolesController');
 //    Route::resource('/posts', 'PostController');
 });
