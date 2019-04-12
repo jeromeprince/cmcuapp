@@ -20,11 +20,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::prefix('admin')->middleware('role:superadministrator|administrator|editor|author|contributor')->group(function () {
-    Route::get('/', 'ManageController@index');
+Route::prefix('admin')->middleware('role:superadministrateur|gestionnaire|medecin|infirmier|pharmacien|logistique|caisse|secretaire|qualite')->group(function () {
+    Route::get('/', 'AdminController@index');
     Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
-//    Route::resource('/users', 'UserController');
-//    Route::resource('/permissions', 'PermissionController', ['except' => 'destroy']);
-//    Route::resource('/roles', 'RoleController', ['except' => 'destroy']);
+    Route::resource('/users', 'UsersController');
+    Route::resource('/permissions', 'PermissionsController', ['except' => 'destroy']);
+    Route::resource('/roles', 'RolesController', ['except' => 'destroy']);
 //    Route::resource('/posts', 'PostController');
 });

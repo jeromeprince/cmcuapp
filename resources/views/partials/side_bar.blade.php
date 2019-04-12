@@ -6,7 +6,7 @@
         </h1>
         <span>M</span>
     </div>
-    <img src="{{ asset('images/logo.jpg') }}" class="profile-bg">
+    <img src="{{ asset('admin/images/logo.jpg') }}" class="profile-bg">
     <ul class="list-unstyled components">
         <li class="active">
             <a href="">
@@ -22,13 +22,13 @@
             </a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
-                    <a href="">Liste des utlisateurs</a>
+                    <a href="{{ route('users.index') }}">Liste des utlisateurs</a>
                 </li>
                 <li>
-                    <a href="">Roles</a>
+                    <a href="{{ route('roles.index') }}">Roles</a>
                 </li>
                 <li>
-                    <a href="forms.html">Permissions</a>
+                    <a href="{{ route('permissions.index') }}">Permissions</a>
                 </li>
             </ul>
         </li>
