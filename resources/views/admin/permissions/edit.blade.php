@@ -17,8 +17,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <form class="" method="POST" action="{{ route('permissions.update', $permission->id) }}">
-                        {{ @csrf_field('PATCH') }}
                         @csrf
+                        @method('PATCH')
                         <div class="form-group">
                             <label for="name" class="col-form-label">Nom de la permission</label>
                             <input type="text" class="form-control" name="name" value="{{ $permission->name }}" placeholder="Nom de la permission"> <span class="form-text"></span>

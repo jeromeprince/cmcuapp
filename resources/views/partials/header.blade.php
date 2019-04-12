@@ -17,19 +17,27 @@
                     <div class="dropdown-menu drop-3">
                         <div class="profile d-flex mr-o">
                             <div class="profile-l align-self-center">
-                                <img src="images/logo.jpg" class="img-fluid mb-3" alt="Responsive image">
+                                <img src="{{ asset('admin/images/logo.jpg') }}" class="img-fluid mb-3" alt="Responsive image">
                             </div>
                             <div class="profile-r align-self-center">
-                                <h3 class="sub-title-w3-agileits">Will Smith</h3>
-                                <a href="mailto:info@example.com">info@example.com</a>
+                                <h3 class="sub-title-w3-agileits">{{ Auth::user()->name }}</h3>
+                                <a href="mailto:info@example.com">{{ Auth::user()->email }}</a>
                             </div>
                         </div>
                         <a href="#" class="dropdown-item mt-3">
                             <h4>
-                                <i class="far fa-user mr-3"></i>My Profile</h4>
+                                <i class="far fa-user mr-3"></i>Mon profile</h4>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </div>
                 </li>
             </ul>
