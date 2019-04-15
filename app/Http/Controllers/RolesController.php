@@ -44,11 +44,12 @@ class RolesController extends Controller
         $role->name = $request->name;
         $role->description = $request->description;
         $role->save();
+
         if ($request->permissions) {
             $role->syncPermissions(explode(',', $request->permissions));
         }
 
-        return redirect()->route('roles.show', $role->id);
+        return redirect()->route('roles.index')->with('success',"Votre nouveau role a bien été ajouté");
     }
     /**
      * Display the specified resource.
@@ -90,11 +91,12 @@ class RolesController extends Controller
         $role->display_name = $request->display_name;
         $role->description = $request->description;
         $role->save();
+
         if ($request->permissions) {
             $role->syncPermissions(explode(',', $request->permissions));
         }
 
-        return redirect()->route('roles.show', $id);
+        return redirect()->route('roles.index')->with('success',"Le role a bien été modifier");
     }
     /**
      * Remove the specified resource from storage.

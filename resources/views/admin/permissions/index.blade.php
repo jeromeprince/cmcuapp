@@ -13,13 +13,14 @@
     @include('partials.header')
     <!--// top-bar -->
         <div class="container">
-            <h1 class="text-center">LISTE DES PERMISSIONS AVEC ROLES</h1>
+            <h1 class="text-center">LISTE DES PERMISSIONS</h1>
         </div>
         <hr>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">
+                        @include('partials.flash')
                         <table id="mytable" class="table table-bordred table-striped">
                             <thead>
                             <th>
@@ -27,7 +28,8 @@
                             </th>
                             <th>ROLE</th>
                             <th>PERMISSION</th>
-                            <th>ACTION</th>
+                            <th>EDITER</th>
+                            <th>SUPPRIMER</th>
                             </thead>
                             <tbody>
 
@@ -38,10 +40,10 @@
                                     </td>
                                     <td>{{ $permission->display_name }}</td>
                                     <td>{{ $permission->name }}</td>
-                                    <td>{{ $permission->description }}</td>
+                                    {{--<td>{{ $permission->description }}</td>--}}
                                     <td>
                                         <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                            <a href="{{ route('permissions.show', $permission->id) }}" class="btn btn-primary btn-xs"><i class="far fa-show"></i></a>
+                                            <a href="{{ route('permissions.show', $permission->id) }}" class="btn btn-primary btn-xs"><i class="far fa-edit"></i></a>
                                         </p>
                                     </td>
                                     <td>
