@@ -1,25 +1,18 @@
-@extends('layouts.layoutP')
+@extends('layouts.admin') @section('title', 'CMCU | Modifier un produit') @section('content')
 
-@section('content')
-    <style>
-        .uper {
-            margin-top: 40px;
-        }
-    </style>
-    <div class="card uper">
-        <div class="card-header">
-           <h2>EDITER LE PRODUIT</h2>
-        </div>
-        <div class="card-body">
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div><br />
-            @endif
+    <body>
+    <div class="se-pre-con"></div>
+    <div class="wrapper">
+    @include('partials.side_bar')
+
+    <!-- Page Content Holder -->
+    @include('partials.header')
+    <!--// top-bar -->
+        <div class="container">
+            <h1 class="text-center">MODIFIER UN PRODUIT</h1>
+            <hr>
+            @include('partials.flash')
+            <div class="col-md-6">
             <form method="post" action="{{ route('produit.update', $produit->id) }}">
                 @method('PATCH')
                 @csrf
@@ -35,11 +28,11 @@
                 </select>
                 </div>
                 <div class="form-group">
-                    <label for="quantity">QUANTITE_STOCK:</label>
+                    <label for="quantity">QUANTITE STOCK:</label>
                     <input type="text" class="form-control" name="quantite_stock" value={{ $produit->quantite_stock }} />
                 </div>
                 <div class="form-group">
-                    <label for="quantity">QUANTITE_ALERTE:</label>
+                    <label for="quantity">QUANTITE ALERTE:</label>
                     <input type="text" class="form-control" name="quantite_alerte" value={{ $produit->quantite_alerte }} />
                 </div>
                 
@@ -51,4 +44,6 @@
             </form>
         </div>
     </div>
+    </div>
+    </body>
 @endsection

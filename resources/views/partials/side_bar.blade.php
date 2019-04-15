@@ -46,7 +46,7 @@
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu1">
                 <li>
-                    <a href="">Produits en stock</a>
+                    <a href="{{ route('produit.index') }}">Produits en stock</a>
                 </li>
                 <li>
                     <a href="">Produit pharmaceutiques</a>

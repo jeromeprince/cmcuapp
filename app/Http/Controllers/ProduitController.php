@@ -14,15 +14,15 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        $produit = Produit::all();
+        $produits = Produit::orderBy('id', 'asc')->paginate(3);
 
-        return view('produit.index', compact('produit'));
+        return view('admin.produit.index', compact('produits'));
     }
 
 
     public function create()
 {
-   return view('produit.create');
+   return view('admin.produit.create');
 }
 
 /**
@@ -48,7 +48,7 @@ class ProduitController extends Controller
           'prix_unitaire'=> $request->get('prix_unitaire')
       ]);
       $produit->save();
-      return redirect('/produit')->with('success', 'Le Produit a été ajouté avec succes !');
+      return redirect()->route('produit.index')->with('success', 'Le produit a été ajouté avec succès !');
     }
 
     /**
@@ -72,7 +72,7 @@ class ProduitController extends Controller
     {
         $produit = Produit::find($id);
 
-        return view('produit.edit', compact('produit'));
+        return view('admin.produit.edit', compact('produit'));
     }
 
     /**
@@ -100,7 +100,7 @@ class ProduitController extends Controller
         $produit->prix_unitaire = $request->get('prix_unitaire');
         $produit->save();
 
-        return redirect('/produit')->with('success', 'Stock has been updated');
+        return redirect()->route('produit.index')->with('success', 'La mise à jour a bien été éffectuer');
     }
 
     /**
@@ -114,7 +114,7 @@ class ProduitController extends Controller
         $produit = Produit::find($id);
         $produit->delete();
 
-        return redirect('/produit')->with('success', 'Stock has been deleted Successfully');
+        return redirect()->route('produit.index')->with('success', 'Le produit a bien été supprimé');
     }
 
 }

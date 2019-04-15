@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('produit', 'ProduitController');
+
 
 
 Route::prefix('admin')->group(function () {
@@ -28,7 +28,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('/users', 'UsersController');
     Route::resource('/permissions', 'PermissionsController', ['except' => 'destroy']);
     Route::resource('/roles', 'RolesController');
-//    Route::resource('/posts', 'PostController');
+    Route::resource('/produit', 'ProduitController');
 });
 
 
