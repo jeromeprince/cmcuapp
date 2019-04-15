@@ -16,8 +16,9 @@ class UsersController extends Controller
      */
     public function index()
     {
+        $roles = Role::all();
         $users = User::orderBy('id', 'desc')->paginate(5);
-        return view('admin.users.index')->withUsers($users);
+        return view('admin.users.index',compact('users', 'roles'));
     }
 
     /**
@@ -27,7 +28,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $roles = Role::all();
+        return view('admin.users.create')->withRoles($roles);
     }
 
     /**
@@ -39,8 +41,13 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|unique:users',
+            'name' => ['required', 'string', 'max:255'],
+            'lieu_naissance' => ['required', 'string', 'max:255'],
+            'date_naissance' => ['date:"dd/mm/yyyy"'],
+            'prenom' => ['required', 'string', 'min:6', 'max:255'],
+            'telephone' => ['required'],
+            'sexe' => ['required'],
+            'login' => ['required', 'string', 'min:6', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6']
         ]);
 
@@ -48,11 +55,20 @@ class UsersController extends Controller
         $password = $input['password'];
         $user = new User();
         $user->name = $request->name;
-        $user->email = $request->email;
+        $user->lieu_naissance = $request->lieu_naissance;
+        $user->date_naissance = $request->date_naissance;
+        $user->prenom = $request->prenom;
+        $user->telephone = $request->telephone;
+        $user->sexe = $request->sexe;
+        $user->login = $request->login;
         $user->password = Hash::make($password);
         $user->save();
 
-        return redirect()->route('users.show', $user->id);
+        if ($request->roles) {
+            $user->syncRoles(explode(',', $request->roles));
+        }
+
+        return redirect()->route('users.index')->with('success',"L'utilisateur a bien été créer");
 
     }
 
@@ -91,20 +107,31 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $this->validateWith([
-            'name' => 'required|max:255',
-            'email' => 'required|email|unique:users,email,'.$id
+            'name' => ['required', 'string', 'max:255'],
+            'lieu_naissance' => ['required', 'string', 'max:255'],
+            'date_naissance' => ['date:"dd/mm/yyyy"'],
+            'prenom' => ['required', 'string', 'min:6', 'max:255'],
+            'telephone' => ['required'],
+            'sexe' => ['required'],
+            'login' => ['required', 'string', 'min:6', 'max:255', 'unique:users']
         ]);
 
 
         $user = User::findOrFail($id);
+
         $user->name = $request->name;
-        $user->email = $request->email;
+        $user->lieu_naissance = $request->lieu_naissance;
+        $user->date_naissance = $request->date_naissance;
+        $user->prenom = $request->prenom;
+        $user->telephone = $request->telephone;
+        $user->sexe = $request->sexe;
+        $user->login = $request->login;
         $user->password = Hash::make($request->password);
 
         $user->save();
-//        $user->syncRoles(explode(',', $request->roles));
+        $user->syncRoles(explode(',', $request->roles));
 
-        return redirect()->route('users.show', $id);
+        return redirect()->route('users.index')->with('success',"L'utilisateur a bien été modifier");
     }
 
     /**

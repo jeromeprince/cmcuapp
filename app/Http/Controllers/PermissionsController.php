@@ -49,7 +49,7 @@ class PermissionsController extends Controller
             $permission->description = $request->description;
             $permission->save();
 
-            return redirect()->route('permissions.index');
+            return redirect()->route('permissions.index')->with('success',"La permission a bien été ajouté");
 
     }
 
@@ -95,7 +95,7 @@ class PermissionsController extends Controller
         $permission->description = $request->description;
         $permission->save();
 
-        return redirect()->route('permissions.show', $id);
+        return redirect()->route('permissions.show', $id)->with('success',"La permission a bien été modifier");
     }
 
     /**
