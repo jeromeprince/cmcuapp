@@ -9,7 +9,7 @@
     <img src="{{ asset('admin/images/logo.jpg') }}" class="profile-bg">
     <ul class="list-unstyled components">
         <li class="active">
-            <a href="">
+            <a href="{{ route('admin.dashboard') }}">
                 <i class="fas fa-th-large"></i>
                 Tableau de bord
             </a>

@@ -20,6 +20,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">
+                        @include('partials.flash')
                         <table id="mytable" class="table table-bordred table-striped">
                             <thead>
                             <th>
@@ -27,6 +28,7 @@
                             </th>
                             <th>ROLE</th>
                             <th>EDITER</th>
+                            <th>VOIR</th>
                             <th>SUPPRIMER</th>
                             </thead>
                             <tbody>
@@ -43,8 +45,8 @@
                                         </p>
                                     </td>
                                     <td>
-                                        <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                            <a href="{{ route('roles.show', $role->id) }}" class="btn btn-primary btn-xs"><i class="far fa-eye"></i></a>
+                                        <p data-placement="top" data-toggle="tooltip" title="Voir">
+                                            <a href="{{ route('roles.show', $role->id) }}" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
                                         </p>
                                     </td>
                                     <td>

@@ -19,7 +19,7 @@
                 @csrf
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="name" class="col-form-label text-md-right">{{ __('Name') }}</label>
+                        <label for="name" class="col-form-label text-md-right">{{ __('Nom') }}</label>
                         <input name="name" class="form-control" value="{{ old('name') }}" type="text" placeholder="Nom">
                     </div>
                     <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
@@ -27,41 +27,43 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="email" class="col-form-label text-md-right">{{ __('Email') }}</label>
-                        <input name="email" class="form-control" value="{{ old('email') }}" type="email" placeholder="Email">
+                        <label for="prenom" class="col-form-label text-md-right">{{ __('Prenom') }}</label>
+                        <input name="prenom" class="form-control" value="{{ old('prenom') }}" type="text" placeholder="Prénom">
                     </div>
-                    <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                        {!! $errors->first('email', '<span class="text-danger">:message</span>') !!}
+                    <div class="form-group {{ $errors->has('prenom') ? 'has-error' : '' }}">
+                        {!! $errors->first('prenom', '<span class="text-danger">:message</span>') !!}
                     </div>
 
-                    {{--<div class="form-group">--}}
-                        {{--<label for="sexe" class="col-form-label text-md-right">{{ __('Sexe') }}</label>--}}
-                        {{--<br>--}}
-                        {{--<input type="radio" id="sexe" class="form-check-inline" name="sexe" value="Homme" {{ $user->sexe ? 'Homme' : '' }} required> Homme--}}
-                        {{--<br>--}}
-                        {{--<input type="radio" id="sexe" class="form-check-inline" name="sexe" value="Femme" {{ $user->sexe ? 'Femme' : '' }} required> Femme--}}
-                        {{--<br>--}}
-                    {{--</div>--}}
+                    <div class="form-group">
+                        <label for="login" class="col-form-label text-md-right">{{ __('Login') }}</label>
+                        <input name="login" class="form-control" value="{{ old('login') }}" type="text" placeholder="Login">
+                    </div>
+                    <div class="form-group {{ $errors->has('login') ? 'has-error' : '' }}">
+                        {!! $errors->first('login', '<span class="text-danger">:message</span>') !!}
+                    </div>
 
-                    {{--<div class="form-group">--}}
-                        {{--<label for="sexe" class="col-form-label text-md-right">{{ __('Lieu de naissance') }}</label>--}}
-                        {{--<input name="lieu_naissance" rows="2" value="{{ $user->lieu_naissance }}" class="form-control" placeholder="LIEU DE NAISSANCE">--}}
-                    {{--</div>--}}
-                    {{--<div class="form-group">--}}
-                        {{--<label for="sexe" class="col-form-label text-md-right">{{ __('Telephone') }}</label>--}}
-                        {{--<input name="telephone" type="tel" rows="2" value="{{ $user->telephone }}" class="form-control" placeholder="TELEPHONE">--}}
-                    {{--</div>--}}
+                    <div class="form-group">
+                        <label for="sexe" class="col-form-label text-md-right">{{ __('Sexe') }}</label>
+                        <br>
+                        <input type="radio" id="sexe" class="form-check-inline" name="sexe" value="Homme" required> Homme
+                        <br>
+                        <input type="radio" id="sexe" class="form-check-inline" name="sexe" value="Femme" required> Femme
+                        <br>
+                    </div>
 
-                    {{--<div class="form-group">--}}
-                        {{--<label for="sexe" class="col-form-label text-md-right">{{ __('Date de naissance') }}</label>--}}
-                        {{--<input name="date_naissance" type="date" rows="2" value="{{ $user->date_naissance }}" class="form-control" placeholder="DATE DE NAISSANCE">--}}
-                    {{--</div>--}}
-                    {{--<div class="form-group">--}}
-                        {{--<div class="form-group">--}}
-                            {{--<label for="sexe" class="col-form-label text-md-right">{{ __('Login') }}</label>--}}
-                            {{--<input name="login" rows="2" value="{{ $user->login }}" class="form-control" placeholder="LOGIN">--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
+                    <div class="form-group">
+                        <label for="sexe" class="col-form-label text-md-right">{{ __('Lieu de naissance') }}</label>
+                        <input name="lieu_naissance" rows="2" value="{{ old('lieu_naissance') }}" class="form-control" placeholder="LIEU DE NAISSANCE">
+                    </div>
+                    <div class="form-group">
+                        <label for="sexe" class="col-form-label text-md-right">{{ __('Telephone') }}</label>
+                        <input name="telephone" type="tel" rows="2" value="{{ old('telephone') }}" class="form-control" placeholder="TELEPHONE">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sexe" class="col-form-label text-md-right">{{ __('Date de naissance') }}</label>
+                        <input name="date_naissance" type="date" rows="2" value="{{ old('date_naissance') }}" class="form-control" placeholder="DATE DE NAISSANCE">
+                    </div>
 
                     <div class="form-group">
                         <label for="password" class="col-form-label text-md-right">{{ __('Mot de passe') }}</label>
@@ -72,14 +74,14 @@
                         {!! $errors->first('password', '<span class="text-danger">:message</span>') !!}
                     </div>
 
-                    {{--<div class="form-group">--}}
-                        {{--<label for="exampleFormControlSelect1">ROLE</label>--}}
-                        {{--<select name="roles[]" class="form-control" id="exampleFormControlSelect1">--}}
-                            {{--@foreach($roles as $role)--}}
-                                {{--<option value="{{ $role->id }}"  {{ $role->id == ' ' ? 'selected' : '' }}>{{ $role->name }}</option>--}}
-                            {{--@endforeach--}}
-                        {{--</select>--}}
-                    {{--</div>--}}
+                    <div class="form-group">
+                    <label for="exampleFormControlSelect1">ROLE</label>
+                    <select name="roles" class="form-control" id="exampleFormControlSelect1">
+                    @foreach($roles as $role)
+                    <option value="{{ $role->id }}"  {{ $role->id == ' ' ? 'selected' : '' }}>{{ $role->name }}</option>
+                    @endforeach
+                    </select>
+                    </div>
 
                     <button type="submit" class="btn btn-primary btn-lg col-md-5" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;Ajouter</button>
                     <a href="{{ route('users.index') }}" class="btn btn-warning btn-lg col-md-5 offset-md-1" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;Annulé</a>

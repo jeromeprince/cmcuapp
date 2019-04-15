@@ -20,6 +20,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">
+                        @include('partials.flash')
                         <table id="mytable" class="table table-bordred table-striped">
                             <thead>
                             <th>
@@ -28,9 +29,9 @@
                             <th>NOM</th>
                             <th>LOGIN</th>
                             <th>ROLE</th>
-                            <th>DATE DE CREATION</th>
                             <th>TELEPHONE</th>
-                            <th>ACTION</th>
+                            <th>EDITER</th>
+                            <th>SUPPRIMER</th>
                             </thead>
                             <tbody>
 
@@ -40,12 +41,13 @@
                                         <input type="checkbox" class="checkthis">
                                     </td>
                                     <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->login }}</td>
                                     @foreach($user->roles as $role)
                                         <td>{{ $role->name }}</td>
                                     @endforeach
-                                    <td>{{ $user->created_at->toFormattedDateString() }}</td>
-                                    <td>{{ $user->updated_at->toFormattedDateString() }}</td>
+                                    <td>{{ $user->telephone }}</td>
+                                    {{--<td>{{ $user->created_at->toFormattedDateString() }}</td>--}}
+                                    {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}
                                     <td>
                                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-xs"><i class="far fa-edit"></i></a>
                                     </td>

@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::prefix('admin')->middleware('role:superadministrateur|gestionnaire|medecin|infirmier|pharmacien|logistique|caisse|secretaire|qualite')->group(function () {
+Route::prefix('admin')->group(function () {
     Route::get('/', 'AdminController@index');
     Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
     Route::resource('/users', 'UsersController');
@@ -28,3 +28,6 @@ Route::prefix('admin')->middleware('role:superadministrateur|gestionnaire|medeci
     Route::resource('/roles', 'RolesController');
 //    Route::resource('/posts', 'PostController');
 });
+
+
+//->middleware('role:superadministrateur|gestionnaire|medecin|infirmier|pharmacien|logistique|caisse|secretaire|qualite')
