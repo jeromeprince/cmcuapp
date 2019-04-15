@@ -1,10 +1,11 @@
-@extends('auth.layouts.login_layout')
+@extends('layouts.login_layout')
 
 @section('content')
 
     <div class="mid-class">
         <div class="art-right-w3ls">
             <h2>Page de connexion</h2>
+            @include('partials.flash')
             <form action="{{ route('login') }}" method="post">
                 @csrf
                 <div class="main">
@@ -33,7 +34,7 @@
             </div>
         </div>
         <div class="art-left-w3ls">
-            <img class="header-w3ls" src="images/logo.jpg" alt="">
+            <img class="header-w3ls img" src="{{ asset('admin/images/logo.jpg') }}" alt="">
             <p class="text-center">
             <h1 align="center"> CENTRE MEDICAL CHIRURGICAL-D'UROLOGIE</h1>
             <h3 align="center"> VALLEE MANGA BELL</h3>
