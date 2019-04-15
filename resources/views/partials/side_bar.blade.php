@@ -49,10 +49,10 @@
                     <a href="{{ route('produit.index') }}">Produits en stock</a>
                 </li>
                 <li>
-                    <a href="">Produit pharmaceutiques</a>
+                    <a href="{{ route('produit.pharmaceutique') }}">Produit pharmaceutiques</a>
                 </li>
                 <li>
-                    <a href="">Produit matériels</a>
+                    <a href="{{ route('materiel.pharmaceutique') }}">Produit matériels</a>
                 </li>
             </ul>
         </li>

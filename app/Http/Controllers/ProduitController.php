@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produit;
+use Illuminate\Support\Facades\DB;
 
 class ProduitController extends Controller
 {
@@ -14,7 +15,7 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        $produits = Produit::orderBy('id', 'asc')->paginate(3);
+        $produits = Produit::orderBy('id', 'asc')->paginate(8);
 
         return view('admin.produit.index', compact('produits'));
     }
@@ -117,4 +118,20 @@ class ProduitController extends Controller
         return redirect()->route('produit.index')->with('success', 'Le produit a bien été supprimé');
     }
 
+    public function stock_pharmaceutique()
+    {
+        $produi = Produit::orderBy('id', 'asc')->paginate(8);
+        $produits = DB::table('produits')->where('categorie', 'pharmaceutique')->get();
+
+        return view('admin.produit.pharmaceutique', compact('produits', 'produi'));
+    }
+
+
+    public function stock_materiel()
+    {
+        $produi = Produit::orderBy('id', 'asc')->paginate(8);
+        $produits = DB::table('produits')->where('categorie', 'materiel')->get();
+
+        return view('admin.produit.materiel', compact('produits', 'produi'));
+    }
 }

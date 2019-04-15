@@ -20,8 +20,8 @@
                                 <img src="{{ asset('admin/images/logo.jpg') }}" class="img-fluid mb-3" alt="Responsive image">
                             </div>
                             <div class="profile-r align-self-center">
-                                <h3 class="sub-title-w3-agileits">{{ Auth::user()->name }}</h3>
-                                <a href="mailto:info@example.com">{{ Auth::user()->email }}</a>
+                                <h3 class="sub-title-w3-agileits">{{ Auth::user()->name}}</h3>
+                                <a href="mailto:info@example.com">{{ Auth::user()->login}}</a>
                             </div>
                         </div>
                         <a href="#" class="dropdown-item mt-3">
