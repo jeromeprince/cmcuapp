@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('produit', 'ProduitController');
+
 
 Route::prefix('admin')->middleware('role:superadministrateur|gestionnaire|medecin|infirmier|pharmacien|logistique|caisse|secretaire|qualite')->group(function () {
     Route::get('/', 'AdminController@index');
